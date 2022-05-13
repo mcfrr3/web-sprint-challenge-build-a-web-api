@@ -17,20 +17,39 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
-  Projects.get(id)
-    .then(result => {
-      if (result) {
-        res.json(result);
-      } else {
-        res.status(404).end();
-      }
-    });
+router.get('/:id', middleware.validateProjectId, (req, res) => {
+  res.json(req.project);
 });
 
 router.post('/', middleware.validateProject, (req, res) => {
   Projects.insert(req.body)
+    .then(result => {
+        res.json(result);
+    });
+});
+
+router.put('/:id', middleware.validateProjectId, middleware.validateProject, (req, res) => {
+  const { completed } = req.body;
+
+  if (completed === undefined) {
+    res.status(400).end();
+  } else {
+    Projects.update(req.params.id, req.body)
+      .then(result => {
+          res.json(result);
+      });
+  }
+});
+
+router.delete('/:id', middleware.validateProjectId, (req, res) => {
+  Projects.remove(req.params.id)
+    .then(result => {
+        res.json(result);
+    });
+});
+
+router.get('/:id/actions', middleware.validateProjectId, (req, res) => {
+  Projects.getProjectActions(req.params.id)
     .then(result => {
         res.json(result);
     });
