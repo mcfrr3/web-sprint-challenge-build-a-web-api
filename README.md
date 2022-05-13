@@ -137,10 +137,10 @@ We have provided test data for all the resources.
 
 ## Submission format
 
-- [ ] Submit via Codegrade by pushing commits to your `main` branch.
-- [ ] Check Codegrade before the deadline to compare its results against your local tests.
-- [ ] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
-- [ ] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
+- [x] Submit via Codegrade by pushing commits to your `main` branch.
+- [x] Check Codegrade before the deadline to compare its results against your local tests.
+- [x] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
+- [x] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
 
 ## Interview Questions
 
@@ -151,3 +151,11 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 1. The basic principles of the REST architectural style.
 1. Understand and explain the use of Express Routers.
 1. Describe tooling used to manually test the correctness of an API.
+
+### Answers:
+
+1. Node.js is a web server (software) that runs on a single thread but in an asynchronous event-loop which does not lock up when performing tasks such as querying a database. Express is a framework for node that provides convenience for developing web APIs or web apps that run on Node.js.
+1. Middleware is used to perform tasks that may manipulate the request or response objects and either pass them on to the next middleware/ route in the chain or sends a response. They can be anything from logging to convenience validation functions/tasks.
+1. REST architecture is a loosely standardized set of rules for creating an API so that it may be structured and implemented simply and using the HTTP protocol and leveraging the "method verbs"
+1. Express routers are used to break down and modularize an API so that typing errors may be avoided as well as breaking down routes into files that are related and make sense to be structured together.
+1. There are several tools these days that may be used to test the correctness of an API including Postman, HTTPie, Insomnia and Swagger. These tools allow a developer to make requests to endpoints with different HTTP methods as well as different kinds of payloads
