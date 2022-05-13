@@ -8,6 +8,11 @@ const actionsRouter = require('../api/actions/actions-router');
 const projectsRouter = require('../api/projects/projects-router');
 // Do NOT `server.listen()` inside this file!
 
+const { logger } = require('./middleware/middleware');
+
+server.use(express.json());
+server.use(logger);
+
 server.use('/api/actions', actionsRouter);
 server.use('/api/projects', projectsRouter);
 
